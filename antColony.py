@@ -1,11 +1,9 @@
-import numpy as np
 import hiperparametros as hp
 import data
 import Formiga
+import imagens
 
-import matplotlib.pyplot as mp 
-import seaborn as sb 
-
+imagens.limpaHistorico()
 formigueiro = list()
 elitismo = list()
 
@@ -27,28 +25,13 @@ for busca in range(data.nBusca):
 
     formigueiro.clear()
     data.inteligente.sort()
+
+    imagens.imgGeracao(busca)
     elitismo.append(data.inteligente[0])
     data.inteligente.clear()
 
 
-
-valor = list()
-for i in range(len(elitismo)):
-    valor.append(elitismo[i].distTotal)
-mp.plot(range(len(valor)), valor)
-mp.show()
-mp.close()
-
-
+imagens.imgEvolucao(elitismo)
 elitismo.sort()
-print(elitismo[0].distTotal)
-
-heatmap=sb.heatmap(data.feromonios, annot=False) 
-heatmap.set_title(f'{elitismo[0].distTotal} == {elitismo[0].caminho}')
-
-#mp.show()
-imagem = heatmap.get_figure()
-imagem.savefig("Img/heatmap.png")
-
-
-
+print(elitismo[0].distTotal, end=' - ')
+print(elitismo[0].caminho)
