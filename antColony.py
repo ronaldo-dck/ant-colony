@@ -1,9 +1,14 @@
 import hiperparametros as hp
 import data
-import Formiga
+from Formiga import Formiga
 import imagens
+import time
+
+
+inicio = time.time()
 
 imagens.limpaHistorico()
+
 formigueiro = list()
 elitismo = list()
 
@@ -11,7 +16,7 @@ for busca in range(data.nBusca):
 
     for i in range(data.nGrafo):
         distTotal = 0
-        formiga = Formiga.Formiga(i, distTotal)
+        formiga = Formiga(i, distTotal)
         formigueiro.append(formiga)
 
     for formiga in formigueiro:
@@ -35,3 +40,16 @@ imagens.imgEvolucao(elitismo)
 elitismo.sort()
 print(elitismo[0].distTotal, end=' - ')
 print(elitismo[0].caminho)
+
+def caminhovalido(caminho):
+    soma = 0
+    for i in range(len(caminho)-1):
+        print(data.dist[caminho[i]][caminho[i+1]])
+        soma += data.dist[caminho[i]][caminho[i+1]]
+    return soma
+
+print(caminhovalido(elitismo[0].caminho))
+
+fim = time.time()
+
+print(fim - inicio)

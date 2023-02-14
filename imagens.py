@@ -1,11 +1,11 @@
 from hiperparametros import PORCENTAGEM_IMAGENS
 from math import floor
-import matplotlib.pyplot as mp
+import matplotlib.pyplot as plt
 import seaborn as sb
 import data
 import os
 
-imgRate = floor(100 / PORCENTAGEM_IMAGENS)
+imgRate = floor(100 / PORCENTAGEM_IMAGENS) 
 
 def limpaHistorico():
     """Exclui todas as imagens presentes na pasta 'Img'"""
@@ -21,12 +21,12 @@ def imgGeracao(busca):
         heatmap.set_title(f'{busca} - {data.inteligente[0].distTotal} == {data.inteligente[0].caminho}')
         imagem = heatmap.get_figure()
         imagem.savefig(f"Img/heatmap{busca}.png")
-        mp.close()
+        plt.close()
 
 def imgEvolucao(elitismo):
     valor = list()
     for i in range(len(elitismo)):
         valor.append(elitismo[i].distTotal)
-    mp.plot(range(len(valor)), valor)
-    mp.savefig("Img/Evolucao.jpg")
-    mp.close()
+    plt.plot(range(len(valor)), valor)
+    plt.savefig("Img/Evolucao.jpg")
+    plt.close()
