@@ -18,7 +18,7 @@ def limpaHistorico():
 def imgGeracao(busca):
     if busca%imgRate == 0:
         heatmap=sb.heatmap(data.feromonios, vmin=0, vmax=data.nBusca) 
-        heatmap.set_title(f'{busca} - {data.inteligente[0].distTotal} == {data.inteligente[0].caminho}')
+        heatmap.set_title(f'{busca} ')
         imagem = heatmap.get_figure()
         imagem.savefig(f"Img/heatmap{busca}.png")
         plt.close()

@@ -16,13 +16,14 @@ class Formiga:
         return self.distTotal < other.distTotal
 
     def achaOpcoes(self):
-
+        #preenche possiveis com os indices dos caminhos existentes
         possiveis = np.asarray(data.dist[self.node_atual]).nonzero()
-
+        #checa quais desses caminhos não foram visitados, trocando o índice por -1 caso foi
         possiveis = np.where(np.isin(possiveis, self.caminho, invert=True), possiveis, -1)
-
+        #mantém em possiveis apenas os valores válidos
         possiveis = possiveis[np.where(possiveis != -1)]
 
+    
 
         return possiveis
 
@@ -52,7 +53,6 @@ class Formiga:
         
         self.distTotal += data.dist[self.node_atual][escolha]
         self.node_atual = escolha
-
 
         self.caminho.append(escolha)
         return 0

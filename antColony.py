@@ -45,4 +45,4 @@ def caminhovalido(caminho):
         soma += data.dist[caminho[i]][caminho[i+1]]
     return soma
 
-print(caminhovalido(elitismo[0].caminho))
+caminhovalido(elitismo[0].caminho)
